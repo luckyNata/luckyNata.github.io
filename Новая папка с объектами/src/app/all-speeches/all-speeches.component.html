@@ -1,0 +1,17 @@
+<div class="main_title">
+  all speeches
+</div>
+<div class="row">
+  <div class="input-group">
+    <div class="col-6 searchLine">
+      <input  class="form-control"  placeholder="Search" type="text" name="search" #searchLine (click)="resetSearch(); searchLine.value=''">
+
+    </div>
+    <div class="col-2 searchBtn">
+      <app-btn [value]="'search'" [className]="'btn-success'"  (click)="searchSpeech(searchLine.value)"></app-btn>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12">
+    <app-left-panel [speeches]="speeches"></app-left-panel>
+  </div>
+</div>

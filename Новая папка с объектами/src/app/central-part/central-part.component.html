@@ -1,0 +1,34 @@
+<form>
+  <div class="row textarea">
+    <div class="input-group title_area">
+        <input  class="form-control"  placeholder="Title" type="text" [(ngModel)]="data.title" name="title">
+    </div>
+    <textarea class="form-control" id="exampleTextarea" rows="10" name="text" [(ngModel)]="data.text"></textarea>
+
+  </div>
+
+  <div class="row">
+    <div class="input-group">
+    <div class="col-12 col-sm-6 col-md-4">
+      <input  class="form-control"  placeholder="Author" type="text" [(ngModel)]="data.author" name="author">
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+      <input  class="form-control" placeholder="Subject area keywords" type="text" [(ngModel)]="data.keywords" name="keywords">
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 date">
+      <input  class="form-control" type="date" [(ngModel)]="data.date" name="date">
+    </div>
+    </div>
+  </div>
+  <div class="alert" *ngIf="added">The speech has been saved</div>
+  <div class="alert" *ngIf="changed">The changes have been saved</div>
+  <div class="row func_btn">
+    <app-btn [value]="selectedSpeech?'edit':'save'" [className]="'btn-success'" (click)="edit()"></app-btn>
+    <app-btn [value]="'delete'" [className]="'btn-danger'" (click)="delete()"></app-btn>
+    <app-btn [value]="'share'" [className]="'btn-info'" (click)="share=!share"></app-btn>
+    <div class="input-group email" *ngIf="share">
+      <input  class="form-control"  placeholder="email" type="text" name="email" #email><button class="btn btn-success" (click)="shareWishPerson(email.value)">OK</button>
+    </div>
+  </div>
+
+</form>

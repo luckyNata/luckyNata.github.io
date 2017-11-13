@@ -1,0 +1,3 @@
+<ul class="list-group list_of_speeches">
+  <li *ngFor="let speech of speeches" class="list-group-item" (click)="selectSpeech(speech)" [class.active]="speechId==speech.id"><a [routerLink]="['/speech', speech.id]">{{speech.title? speech.title : defaultName}}</a></li>
+</ul>
