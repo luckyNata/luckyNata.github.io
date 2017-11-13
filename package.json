@@ -4,16 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-
+    "start": "concurrently \"npm run gulp:watch\" \"ng serve\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "gulp:watch": "gulp",
-    "gulp:sass": "gulp sass",
-    "start":        "http-server dist/",
-    "preinstall":   "npm install -g http-server",
-    "postinstall":  "ng build --prod"
+    "gulp:sass": "gulp sass"
   },
   "private": true,
   "dependencies": {
