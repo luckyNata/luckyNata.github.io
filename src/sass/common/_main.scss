@@ -1,0 +1,88 @@
+
+.input-group .form-control{
+  width: 100%;
+}
+.container{
+  margin-top: 30px;
+
+  .buttons {
+    margin-bottom: 30px;
+    a {
+      border: 1px solid $grey;
+      padding: 10px 0;
+      text-align: center;
+      color: #000;
+      text-decoration: none;
+      &:hover {
+        background-color: $blue;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      &.active {
+        background-color: $grey;
+      }
+    }
+  }
+
+  .list_of_speeches {
+    li {
+      a {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        color: #000;
+      }
+      &:hover{
+        background-color: $blue;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      &.active {
+        background-color: $blue;
+        color: #000;
+        border: 1px solid rgba(0,0,0,.125);
+      }
+    }
+  }
+  .left_panel {
+    padding: 0;
+    padding-right: 10px;
+  }
+  .textarea {
+    margin-bottom: 10px;
+  }
+  .input-group  {
+    div:first-child{
+      padding-left: 0;
+    }
+    div:last-child {
+      padding-right: 0;
+    }
+  }
+  app-btn {
+    margin-right: 20px;
+  }
+  .main_title{
+    color: $title;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  input::placeholder {
+    color: $pholder;
+  }
+  .searchLine {
+    margin: 10px 15px 10px;
+  }
+  .func_btn {
+    margin-bottom: 40px;
+  }
+  .email {
+    margin-top: 20px;
+  }
+  .title_area {
+    margin-bottom: 10px;
+  }
+
+}
