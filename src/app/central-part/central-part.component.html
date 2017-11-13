@@ -20,6 +20,8 @@
     </div>
     </div>
   </div>
+  <div class="alert" *ngIf="added">The speech has been saved</div>
+  <div class="alert" *ngIf="changed">The changes have been saved</div>
   <div class="row func_btn">
     <app-btn [value]="selectedSpeech?'edit':'save'" [className]="'btn-success'" (click)="edit()"></app-btn>
     <app-btn [value]="'delete'" [className]="'btn-danger'" (click)="delete()"></app-btn>

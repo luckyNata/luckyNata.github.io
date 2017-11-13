@@ -1,6 +1,7 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, EventEmitter, Output} from '@angular/core';
 import {SpeechService} from "../speech-service.service";
 import { Subscription } from "rxjs/Rx";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-central-part',
@@ -9,7 +10,11 @@ import { Subscription } from "rxjs/Rx";
 export class CentralPartComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   selectedSpeech: boolean = false;
+  @Output() savedSpeech = new EventEmitter();
+
   share: boolean = false;
+  added: boolean = false;
+  changed: boolean = false;
   data: IData = {
     id: null,
     title: "",
@@ -19,11 +24,11 @@ export class CentralPartComponent implements OnInit, OnDestroy {
     date: ""
   };
 
-  constructor(private speechService: SpeechService) { }
+  constructor(private speechService: SpeechService,
+              private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.speechService.selectedItem.subscribe((item: any) => {
-        console.log('selected item', item);
         this.data.id = item.id;
         this.data.title = item.title;
         this.data.text = item.text;
@@ -39,19 +44,25 @@ export class CentralPartComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
   edit(){
-    console.log('selectedSpeech', this.selectedSpeech);
     if(this.selectedSpeech){
       //modify
-      this.speechService.updateData(this.data);
+      this.speechService.updateData(this.data)
+        .subscribe((changedItem)=> {
+          this.savedSpeech.emit(changedItem);
+          this.changed = true
+        });
+
 
     } else {
       //create new one
-      this.speechService.createSpeech(this.data);
+      this.speechService.createSpeech(this.data)
+        .subscribe(()=> this.added = true);
     }
 
   }
   delete(){
-    this.speechService.delete(this.data);
+    this.speechService.delete(this.data)
+      .subscribe(()=> this.router.navigate(['/all-speeches']));
   }
   shareWishPerson(email){
     console.log('email', email);

@@ -73,7 +73,10 @@
     color: $pholder;
   }
   .searchLine {
-    margin: 10px 15px 10px;
+    margin: 10px 0 10px 15px;
+  }
+  .searchBtn {
+    margin: 10px 0 10px;
   }
   .func_btn {
     margin-bottom: 40px;
@@ -84,5 +87,7 @@
   .title_area {
     margin-bottom: 10px;
   }
-
+  .alert {
+    color: $alert;
+  }
 }

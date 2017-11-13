@@ -7,6 +7,7 @@ import {SpeechService} from "../speech-service.service";
 })
 export class LeftPanelComponent implements OnInit {
   @Input() speeches: any;
+  @Input() speechId: any;
   submenu: number;
   defaultName: string = 'Speech';
 

@@ -14,6 +14,9 @@ export class MySpeechesComponent implements OnInit {
     this.getMySpeeches();
   }
   getMySpeeches(){
-    this.speeches = this.speechService.getMYSpeeches();
+    this.speechService.getMYSpeeches()
+      .subscribe((res: any) => {
+        this.speeches = res;
+      })
   }
 }

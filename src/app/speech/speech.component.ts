@@ -10,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 export class SpeechComponent implements OnInit {
   speeches: any;
   subscription: Subscription;
-  speechId: number;
+  speechId: any;
   constructor(private speechService: SpeechService,
               private activatedRoute: ActivatedRoute) {
       this.subscription = this.activatedRoute.params.subscribe(params => {
@@ -24,11 +24,17 @@ export class SpeechComponent implements OnInit {
     this.getCurrentSpeech(this.speechId);
   }
   getAllSpeeches(){
-    this.speeches = this.speechService.getSpeeches();
-    console.log('current speech', this.speeches);
+    this.speechService.getSpeeches()
+      .subscribe((res: any) => {
+        this.speeches = res;
+      })
+
   }
   getCurrentSpeech(id){
     this.speechService.getSpeech(id);
+  }
+  updateList(event){
+    this.getAllSpeeches();
   }
 
 }

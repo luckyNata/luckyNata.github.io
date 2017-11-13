@@ -14,9 +14,18 @@ export class AllSpeechesComponent implements OnInit {
     this.getAllSpeeches();
   }
   getAllSpeeches(){
-    this.speeches = this.speechService.getSpeeches();
+    this.speechService.getSpeeches()
+      .subscribe((res: any) => {
+        this.speeches = res;
+      })
   }
   searchSpeech(string){
-    console.log('search', string);
+    let filtered = this.speeches.filter((item) => {
+      return item.keywords.match(string);
+    });
+    this.speeches = filtered;
+  }
+  resetSearch(){
+    this.getAllSpeeches();
   }
 }

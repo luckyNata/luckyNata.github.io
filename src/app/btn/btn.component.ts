@@ -13,7 +13,6 @@ export class BtnComponent implements OnInit {
   @Input() click = (event: Event) => {};
 
   onClick (event: Event) {
-    console.log('click', this.click, event);
     if (this.click) {
       this.click(event);
       event.preventDefault();
