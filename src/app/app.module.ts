@@ -16,6 +16,7 @@ import { AllSpeechesComponent } from './all-speeches/all-speeches.component';
 import { MySpeechesComponent } from './my-speeches/my-speeches.component';
 import { NewSpeechComponent } from './new-speech/new-speech.component';
 import { SpeechComponent } from './speech/speech.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SpeechComponent } from './speech/speech.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(RoutesConfig.config),
     InMemoryWebApiModule.forRoot(InMemoryDb)
   ],
